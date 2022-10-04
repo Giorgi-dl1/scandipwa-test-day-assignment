@@ -1,0 +1,94 @@
+.Checkout::before {
+  height: 12rem !important;
+}
+.progressbar {
+  width: 100%;
+  position: absolute;
+  top: 6rem;
+  transform: translateY(-50%);
+}
+.progressbar-list {
+  display: flex;
+  padding: 20px 0;
+  position: relative;
+  justify-content: space-evenly;
+}
+.progressbar-item {
+  padding: 0 20px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  min-width: 170px;
+  position: relative;
+}
+.progressbar-item-count {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  color: white;
+  background-color: var(--checkout-address-selected-color);
+  margin: auto;
+  margin-bottom: 5px;
+  font-size: 16px;
+  position: relative;
+}
+.progressbar-item-label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.progressbar-item::after {
+  content: '';
+  width: 45%;
+  height: 4px;
+  background-color: var(--checkout-address-selected-color);
+  position: absolute;
+  top: 19px;
+  left: 0;
+  z-index: -3;
+  transition: 1s;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.progressbar-item::before {
+  content: '';
+  width: 45%;
+  height: 4px;
+  background-color: var(--checkout-address-selected-color);
+  position: absolute;
+  top: 19px;
+  left: 0;
+  z-index: -3;
+  transform: translateX(122.5%);
+  transition: 1s;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.active.progressbar-item ~ .progressbar-item::after,
+.active.progressbar-item ~ .progressbar-item::before,
+.active.progressbar-item::before {
+  background-color: rgb(196, 196, 196);
+}
+.count {
+  display: none;
+}
+.checksign {
+  width: 10px;
+  height: 20px;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  transform: translateY(-10%) rotate(45deg);
+}
+.active .progressbar-item-count .count,
+.active ~ .progressbar-item .progressbar-item-count .count {
+  display: flex;
+}
+.active .progressbar-item-count .checksign,
+.active ~ .progressbar-item .progressbar-item-count .checksign {
+  display: none;
+}
